@@ -10,7 +10,8 @@ const config = {
     useUnifiedTopology: true
 };
 var Schema = require("mongoose").Schema; const userSchema = Schema({
-    type: String, id: String,
+    type: String, 
+    id: String,
     name: String,
     detail: String,
     quantity: Number, price: Number,
@@ -53,6 +54,7 @@ expressApp.use((req, res, next) => {
 const addProduct = (productData) => {
     return new Promise((resolve, reject) => {
         var new_product = new Product(productData);
+        console.log(productData);
         new_product.save().then((data) => {
             resolve({ message: 'Product added successfully' });
         }).catch((err) => {
